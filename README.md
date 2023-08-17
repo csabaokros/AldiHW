@@ -2,12 +2,15 @@
 
 ## How to:
 
-1. clone this repository
+1. Clone this repository
 2. Install dependencies (`npm i` or `yarn` or `pnpm install`)
+3. Create a `.env` file with a `PRODUCT_LIST_ENDPOINT` variable pointing to the server's URL
 
 To run in develpment mode run `npm run dev` or `npm run preview` for production preview.
 
 ## For developement
+
+Run unit tests using `npm run test`
 
 This solution was developed using [Visual Studio Code](https://code.visualstudio.com/). Here are some useful extensions for the development mode:
 

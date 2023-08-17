@@ -1,6 +1,6 @@
 import Error from "@/server/errors";
 
-type Product = {
+export type Product = {
   id: string;
   name: string;
   img: string;
@@ -9,9 +9,7 @@ type Product = {
   price: number;
 };
 
-type ProductList = Product[];
-
-export default defineEventHandler(async (event): Promise<ProductList> => {
+export default defineEventHandler(async (event): Promise<Product[]> => {
   const { PRODUCT_LIST_ENDPOINT } = useRuntimeConfig().app;
 
   if (!PRODUCT_LIST_ENDPOINT)
