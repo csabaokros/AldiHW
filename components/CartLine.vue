@@ -5,7 +5,7 @@
       class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
     >
       <div class="flex items-center">
-        <div class="h-28 w-28 mr-8 flex justify-center">
+        <div class="h-28 w-28 mr-8 flex justify-center bg-white rounded-md">
           <img
             :src="product.img"
             :alt="product.name"

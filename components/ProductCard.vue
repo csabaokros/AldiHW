@@ -12,7 +12,7 @@
         </div>
         <div class="absolute top-4 right-4" v-if="product.minOrderAmount > 1">
           <span
-            class="bg-gray-100 text-gray-600 text-sm font-medium mr-2 px-2.5 py-1 rounded dark:bg-grey-200 dark:text-white cursor-default"
+            class="bg-gray-100 text-gray-600 text-sm font-medium mr-2 px-2.5 py-1 rounded dark:bg-gray-400 dark:text-white cursor-default"
             >{{ product.minOrderAmount }} or more</span
           >
         </div>
@@ -49,12 +49,13 @@
           type="number"
           name="amount"
           id="amount"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-800 focus:border-teal-800 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-24 out-of-range:border-red-500"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-800 focus:border-teal-800 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-24 out-of-range:border-red-600 disabled:opacity-50"
           placeholder="Amount"
           required
           :min="product.minOrderAmount"
           :max="product.availableAmount"
           v-model="amount"
+          :disabled="outOfStock"
         />
       </div>
       <div class="w-1/2">
@@ -71,8 +72,9 @@
         </div>
       </div>
     </div>
-    <p class="px-2 pt-1 h-4 text-xs text-red-800">
-      <span v-if="!validAmount"
+    <p class="px-2 pt-1 h-4 text-xs text-red-800 dark:text-red-600">
+      <span v-if="outOfStock">This product is temporarily out of stock</span>
+      <span v-else-if="!validAmount"
         >Please type a number between {{ product.minOrderAmount }} and
         {{ product.availableAmount }}</span
       >
@@ -157,6 +159,13 @@ const validAmount = computed(() => {
     amount.value > 0 &&
     amount.value >= props.product.minOrderAmount &&
     amount.value <= props.product.availableAmount
+  );
+});
+
+const outOfStock = computed(() => {
+  return (
+    props.product.availableAmount === 0 ||
+    props.product.availableAmount < props.product.minOrderAmount
   );
 });
 

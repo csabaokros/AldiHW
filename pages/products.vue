@@ -1,11 +1,7 @@
 <template>
-  <div class="dark:bg-gray-800">
-    <Header
-      class="flex justify-between"
-      page-title="Product listing"
-      :sticky="true"
-    >
-      <Cart></Cart>
+  <div class="p-4 dark:bg-gray-800 min-h-screen">
+    <Header page-title="Product listing">
+      <CartComponent></CartComponent>
     </Header>
     <main class="container mx-auto p-4">
       <div class="grid gap-8 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
@@ -28,12 +24,7 @@
 <script setup lang="ts">
 import type { Product } from "@/server/api/products";
 
-import {
-  products,
-  fetchProducts,
-  fetchingProducts,
-  productListError,
-} from "@/store/products";
+import { products, fetchProducts, fetchingProducts } from "@/store/products";
 
 useHead({
   title: "Product listing",

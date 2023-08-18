@@ -1,12 +1,8 @@
 <template>
   <header
-    :class="
-      sticky &&
-      'sticky top-0 ' +
-        'flex justify-between p-3 pb-1 mb-6 sticky top-0 w-full bg-white z-50'
-    "
+    class="sticky top-0 flex justify-between p-3 pb-1 mb-6 w-full bg-white z-50 dark:bg-gray-800"
   >
-    <div class="flex">
+    <div class="flex dark:text-slate-200">
       <NuxtLink to="/products">
         <svg
           class="w-10 h-10 mr-4"
@@ -23,12 +19,12 @@
           />
         </svg>
       </NuxtLink>
-      <h1 class="text-4xl font-bold dark:text-slate-200">{{ pageTitle }}</h1>
+      <h1 class="text-4xl font-bold">{{ pageTitle }}</h1>
     </div>
     <slot />
   </header>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ pageTitle: string; sticky?: boolean }>();
+const props = defineProps<{ pageTitle: string }>();
 </script>
