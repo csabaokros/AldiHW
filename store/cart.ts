@@ -7,6 +7,7 @@ export type CartItem = {
   name: string;
   img: string;
   amount: number;
+  price: number;
 };
 
 export const cart = reactive(new Map<Product, number>());
@@ -50,12 +51,14 @@ export const removeFromCart = (
 export const cartContents = computed<CartItem[]>((): CartItem[] => {
   const cartItems = [];
   for (const item of cart.entries()) {
-    const { name, img } = item[0];
+    const { name, img, price } = item[0];
     const amount = item[1];
+    const cost = (amount * price).toFixed(2);
     cartItems.push({
       name,
       img,
       amount,
+      price,
     });
   }
   return cartItems;

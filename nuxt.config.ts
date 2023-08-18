@@ -10,4 +10,7 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: { exclude: ["fsevents"] },
   },
+  routeRules: {
+    "/": { redirect: "/products" },
+  },
 });
