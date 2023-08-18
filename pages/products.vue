@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 dark:bg-gray-800 min-h-screen">
+  <div class="px-4 pb-8 dark:bg-gray-800 min-h-screen">
     <Header page-title="Product listing">
       <CartComponent></CartComponent>
     </Header>
