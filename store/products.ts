@@ -6,7 +6,6 @@ export const fetchProducts = async () => {
   try {
     products.value = await $fetch("/api/products");
   } catch (error: any) {
-    productListError.value = error.message;
     products.value = [];
     console.log(error);
   }
@@ -15,7 +14,6 @@ export const fetchProducts = async () => {
 
 export const products = ref<Product[]>([]);
 export const fetchingProducts = ref<boolean>(false);
-export const productListError = ref<string>("");
 
 export function adjustStock(product: Product, by: number): boolean {
   const productToReduce = products.value.find((item) => item.id === product.id);

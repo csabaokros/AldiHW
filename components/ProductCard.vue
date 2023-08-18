@@ -71,6 +71,12 @@
         </div>
       </div>
     </div>
+    <p class="px-2 pt-1 h-4 text-xs text-red-800">
+      <span v-if="!validAmount"
+        >Please type a number between {{ product.minOrderAmount }} and
+        {{ product.availableAmount }}</span
+      >
+    </p>
     <div class="px-2">
       <button
         type="button"
@@ -132,7 +138,6 @@ const props = defineProps<{
 }>();
 
 const amount = ref(0);
-const cartError = ref("");
 const added = ref(false);
 
 let timeOut: ReturnType<typeof setTimeout>;
@@ -163,9 +168,7 @@ const addProductToCart = () => {
     timeOut = setTimeout(() => {
       added.value = false;
     }, 500);
-  } catch (error: any) {
-    cartError.value = error.message ? error.message : "An error occured";
-  }
+  } catch (error: any) {}
 };
 
 onMounted(() => {
