@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 dark:bg-gray-800 min-h-screen">
+  <div class="px-4 dark:bg-gray-800 min-h-screen">
     <Header page-title="Cart"></Header>
     <main class="container mx-auto p-4 lg:max-w-[760px]">
       <div class="relative overflow-x-auto">
