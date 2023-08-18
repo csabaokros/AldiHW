@@ -8,14 +8,33 @@
         <template v-if="fetchingProducts">
           <CardPlaceholder></CardPlaceholder>
           <CardPlaceholder></CardPlaceholder>
+          <CardPlaceholder class="invisible lg:visible"></CardPlaceholder>
+          <CardPlaceholder class="invisible lg:visible"></CardPlaceholder>
+          <CardPlaceholder class="invisible xl:visible"></CardPlaceholder>
+          <CardPlaceholder class="invisible xl:visible"></CardPlaceholder>
         </template>
-        <template v-else>
+        <template v-else-if="products.length">
           <ProductCard
             v-for="product in products"
             :key="product.id"
             :product="product"
           ></ProductCard>
         </template>
+      </div>
+      <div
+        v-if="!fetchingProducts && products.length === 0"
+        class="flex justify-center"
+      >
+        <MissingItems>
+          <p class="mb-4">No products to show</p>
+          <p>
+            <a
+              @click="fetchProducts"
+              class="text-teal-400 hover:text-teal-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:text-teal-500 dark:hover:text-teal-600 cursor-pointer"
+              >Try again</a
+            >
+          </p>
+        </MissingItems>
       </div>
     </main>
   </div>

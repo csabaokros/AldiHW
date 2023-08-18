@@ -84,18 +84,10 @@
           </button>
         </div>
         <div class="flex justify-center" v-else>
-          <div
-            class="m-5 p-4 rounded-md bg-gray-50 text-gray-600 text-center dark:bg-gray-700 dark:text-gray-400"
-          >
-            <p class="mb-4">You have not added anything to your cart yet.</p>
-            <p>
-              <NuxtLink
-                to="/products"
-                class="text-teal-400 hover:text-teal-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:text-teal-500 dark:hover:text-teal-600"
-                >Go back to shopping</NuxtLink
-              >
-            </p>
-          </div>
+          <MissingItems
+            message="You have not added anything to your cart yet."
+            :link="{ text: 'Go back to shopping', url: '/products' }"
+          ></MissingItems>
         </div>
       </div>
     </main>
