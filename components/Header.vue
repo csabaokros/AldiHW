@@ -1,5 +1,11 @@
 <template>
-  <header class="flex justify-between">
+  <header
+    :class="
+      sticky &&
+      'sticky top-0 ' +
+        'flex justify-between p-3 pb-1 mb-6 sticky top-0 w-full bg-white z-50'
+    "
+  >
     <div class="flex">
       <NuxtLink to="/products">
         <svg
@@ -24,5 +30,5 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ pageTitle: string }>();
+const props = defineProps<{ pageTitle: string; sticky?: boolean }>();
 </script>

@@ -12,7 +12,7 @@
         </div>
         <div class="absolute top-4 right-4" v-if="product.minOrderAmount > 1">
           <span
-            class="bg-teal-100 text-teal-600 text-sm font-medium mr-2 px-2.5 py-1 rounded dark:bg-teal-500 dark:text-white cursor-default"
+            class="bg-gray-100 text-gray-600 text-sm font-medium mr-2 px-2.5 py-1 rounded dark:bg-grey-200 dark:text-white cursor-default"
             >{{ product.minOrderAmount }} or more</span
           >
         </div>
@@ -135,6 +135,8 @@ const amount = ref(0);
 const cartError = ref("");
 const added = ref(false);
 
+let timeOut: ReturnType<typeof setTimeout>;
+
 const qtyInCart = computed<number>(() => {
   if (!cart.has(props.product)) return 0;
   return cart.get(props.product)!;
@@ -157,7 +159,8 @@ const addProductToCart = () => {
   try {
     addToCart(props.product, amount.value);
     added.value = true;
-    setTimeout(() => {
+    if (timeOut) clearTimeout(timeOut);
+    timeOut = setTimeout(() => {
       added.value = false;
     }, 500);
   } catch (error: any) {

@@ -1,6 +1,10 @@
 <template>
-  <div class="p-4 dark:bg-gray-800">
-    <Header class="flex justify-between" page-title="Product listing">
+  <div class="dark:bg-gray-800">
+    <Header
+      class="flex justify-between"
+      page-title="Product listing"
+      :sticky="true"
+    >
       <Cart></Cart>
     </Header>
     <main class="container mx-auto p-4">
@@ -30,16 +34,6 @@ import {
   fetchingProducts,
   productListError,
 } from "@/store/products";
-import { cartContents, addToCart } from "@/store/cart";
-
-const addItemToCart = (item: Product, amount = 1) => {
-  try {
-    addToCart(item, amount);
-    console.log(products);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 useHead({
   title: "Product listing",
