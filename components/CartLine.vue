@@ -16,7 +16,7 @@
           <p class="text-xl font-medium mb-4">{{ product.name }}</p>
           <button
             type="button"
-            class="text-xs font-normal text-gray-500 hover:text-gray-400"
+            class="text-xs font-normal text-red-800 dark:text-red-600 hover:text-red-600 dark:hover:text-red-800"
             @click="removeFromCart(product)"
           >
             <svg

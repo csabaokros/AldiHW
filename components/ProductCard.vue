@@ -2,7 +2,7 @@
   <div>
     <div class="">
       <div class="relative text-center flex justify-center bg-white rounded-lg">
-        <img :src="product.img" class="h-96 object-cover rounded-lg" />
+        <img :src="product.img" class="h-96 object-contain rounded-lg" />
         <div
           class="absolute top-4 left-4 bg-slate-50 rounded-md p-1 px-2 dark:bg-slate-600 dark:text-white"
         >
